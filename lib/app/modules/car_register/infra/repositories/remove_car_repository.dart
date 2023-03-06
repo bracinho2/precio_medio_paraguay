@@ -12,9 +12,9 @@ class RemoveCarRepositoryImpl implements RemoveCarRepository {
   @override
   Future<Either<Failure, Unit>> call({required String carID}) async {
     try {
-      final result = await _removeCarDatasource.call(carID: carID);
+      await _removeCarDatasource.call(carID: carID);
 
-      return Right(result);
+      return const Right(unit);
     } on Failure catch (e) {
       return Left(e);
     } catch (e, s) {
@@ -22,7 +22,7 @@ class RemoveCarRepositoryImpl implements RemoveCarRepository {
         CarRegisterError(
           message: e.toString(),
           stackTrace: s,
-          label: 'CarRegister Reposity Error',
+          label: 'Remove Car Reposity Error',
         ),
       );
     }

@@ -22,7 +22,7 @@ class UpdateCarRepositoryImpl implements UpdateCarRepository {
         CarRegisterError(
           message: e.toString(),
           stackTrace: s,
-          label: 'CarRegister Reposity Error',
+          label: 'Update Car Reposity Error',
         ),
       );
     }

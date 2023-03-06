@@ -1,7 +1,6 @@
-import 'package:dartz/dartz.dart';
 
 abstract class RemoveCarDatasource {
-  Future<Unit> call({
+  Future<bool> call({
     required String carID,
   });
 }

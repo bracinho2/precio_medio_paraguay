@@ -26,7 +26,7 @@ class GetAllCarsRepositoryImpl implements GetAllCarsRepository {
         CarRegisterError(
           message: e.toString(),
           stackTrace: s,
-          label: 'CarRegister Reposity Error',
+          label: 'Get All Cars Reposity Error',
         ),
       );
     }
