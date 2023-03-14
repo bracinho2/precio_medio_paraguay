@@ -4,14 +4,14 @@ import 'package:precio_medio_paraguay/app/modules/exchanges/domain/repositories/
 import '../../../../core/errors/errors.dart';
 import '../entities/exchange_entity.dart';
 
-abstract class GetExchangeUsecase {
+abstract class GetAllExchangeUsecase {
   Future<Either<Failure, List<ExchangeEntity>>> call();
 }
 
-class GetExchangeUsecaseImpl implements GetExchangeUsecase {
+class GetAllExchangeUsecaseImpl implements GetAllExchangeUsecase {
   final GetExchangeRepository _getExchangeRepository;
 
-  GetExchangeUsecaseImpl(this._getExchangeRepository);
+  GetAllExchangeUsecaseImpl(this._getExchangeRepository);
   @override
   Future<Either<Failure, List<ExchangeEntity>>> call() async {
     return _getExchangeRepository.call();

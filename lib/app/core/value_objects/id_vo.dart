@@ -7,7 +7,7 @@ class ID extends ValueObject<String> {
 
   void _validate() {
     if (value.contains(value)) {
-      message = 'Informe o ID do veículo';
+      message = 'Informe o ID';
     }
   }
 
@@ -16,6 +16,6 @@ class ID extends ValueObject<String> {
 
   @override
   String toString() {
-    return 'ID do Veículo: $value';
+    return 'ID $value';
   }
 }

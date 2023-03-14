@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:precio_medio_paraguay/app/core/errors/errors.dart';
 import 'package:uno/uno.dart';
 
@@ -27,7 +28,7 @@ class ClientHttpError extends Failure {
 }
 
 class UnoApiProvider implements ApiBuilder {
-  final Uno _uno;
+  final Dio _uno;
 
   UnoApiProvider(this._uno);
   @override
@@ -35,9 +36,11 @@ class UnoApiProvider implements ApiBuilder {
     required String baseUrl,
   }) async {
     try {
-      final response = await _uno.get(baseUrl);
+      final response = await _uno.get(
+        baseUrl,
+      );
 
-      return ApiClientResponse(response.status, response.data);
+      return ApiClientResponse(response.hashCode, response.data);
     } on UnoError catch (e, s) {
       throw ClientHttpError(
         stackTrace: s,

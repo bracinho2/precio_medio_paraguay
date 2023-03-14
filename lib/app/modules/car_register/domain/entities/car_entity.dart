@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:precio_medio_paraguay/app/core/municipio_departamentos_paraguay/departamento_paraguay.dart';
-import 'package:precio_medio_paraguay/app/core/municipio_departamentos_paraguay/municipio_paraguay.dart';
 import 'package:precio_medio_paraguay/app/core/value_objects/car_color_vo.dart';
 import 'package:precio_medio_paraguay/app/core/value_objects/car_manufacturer_vo.dart';
 import 'package:precio_medio_paraguay/app/core/value_objects/car_name_vo.dart';
@@ -19,8 +16,8 @@ class CarEntity {
   CarGearType _gear;
   CarColor _color;
   CarSaleType _saleTipe;
-  Municipio _municipio;
-  Departamento _departamento;
+  String _municipio;
+  String _departamento;
   Date _informedAt;
   Date _updateAt;
   ID _informedByID;
@@ -29,11 +26,11 @@ class CarEntity {
     required String name,
     required String manufacturer,
     required String year,
-    required CarGearType gear,
+    required String gear,
     required String color,
     required CarSaleType saleType,
-    required Municipio municipio,
-    required Departamento departamento,
+    required String municipio,
+    required String departamento,
     required DateTime informedAt,
     required DateTime updateAt,
     required String informedByID,
@@ -41,7 +38,7 @@ class CarEntity {
         _name = CarName(name),
         _year = CarModelYear(year),
         _manufacturer = CarManufacturer(manufacturer),
-        _gear = CarGearType.manual,
+        _gear = CarGearType.fromString(gear),
         _color = CarColor(color),
         _saleTipe = CarSaleType.private,
         _municipio = municipio,
@@ -72,12 +69,11 @@ class CarEntity {
   CarSaleType get getSaleType => _saleTipe;
   void setCarSaleType(CarSaleType value) => _saleTipe = value;
 
-  Municipio get getMunicipio => _municipio;
-  void setMunicipio(Municipio? value) =>
-      _municipio = value ?? Municipio(id: 0, name: '', departamento: 0);
+  String get getMunicipio => _municipio;
+  void setMunicipio(String? value) => _municipio = value ?? '';
 
-  Departamento get getDepartamento => _departamento;
-  void setDepartamento(Departamento value) => _departamento = value;
+  String get getDepartamento => _departamento;
+  void setDepartamento(String value) => _departamento = value;
 
   Date get getInformedAt => _informedAt;
   void setInformedAt(DateTime value) => _informedAt = Date(value);
@@ -136,11 +132,11 @@ class CarEntity {
       name: '',
       manufacturer: '',
       year: '',
-      gear: CarGearType.manual,
+      gear: 'manual',
       color: '',
       saleType: CarSaleType.private,
-      municipio: Municipio(id: 0, name: '', departamento: 0),
-      departamento: Departamento(id: 0, name: '', capital: ''),
+      municipio: '',
+      departamento: '',
       informedAt: DateTime.now(),
       updateAt: DateTime.now(),
       informedByID: '',

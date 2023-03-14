@@ -12,7 +12,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Modular.to.navigate('/home_page/');
+      Modular.to.navigate('/home/');
     });
     super.initState();
   }

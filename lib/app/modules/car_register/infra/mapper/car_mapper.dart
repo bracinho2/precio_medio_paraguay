@@ -1,4 +1,3 @@
-import 'package:precio_medio_paraguay/app/core/enums/car_gear_enum.dart';
 import 'package:precio_medio_paraguay/app/core/enums/car_sale_type.dart';
 import 'package:precio_medio_paraguay/app/modules/car_register/domain/entities/car_entity.dart';
 import 'package:precio_medio_paraguay/app/modules/car_register/domain/errors/errors.dart';
@@ -11,14 +10,14 @@ class CarMapper {
         name: map['name'],
         manufacturer: map['manufacturer'],
         year: map['year'],
-        gear: CarGearType.fromString(map['gear']),
+        gear: map['gear'],
         color: map['color'],
         saleType: CarSaleType.fromString(map['saleType']),
         municipio: map['municipio'],
         departamento: map['departamento'],
-        informedAt: map['informedAt'],
-        updateAt: map['updateAt'],
-        informedByID: map['informedByID'],
+        informedAt: DateTime.parse(map['created']),
+        updateAt: DateTime.parse(map['updated']),
+        informedByID: map['informedBy'],
       );
     } catch (e, s) {
       throw CarRegisterError(

@@ -1,8 +1,12 @@
-import 'package:precio_medio_paraguay/app/core/value_objects/price_vo.dart';
+import 'package:dartz/dartz.dart';
+import 'package:precio_medio_paraguay/app/modules/car_price/domain/entities/car_price_entitity.dart';
+import 'package:precio_medio_paraguay/app/modules/car_price/domain/errors/errors.dart';
 import 'package:precio_medio_paraguay/app/modules/car_price/domain/repositories/add_car_price_repository.dart';
 
+import '../../../../core/errors/errors.dart';
+
 abstract class AddCarPriceUsecase {
-  Future<bool> call({required PriceUSD price});
+  Future<Either<Failure, Unit>> call({required CarPriceEntity carPriceEntity});
 }
 
 class AddCarPrice implements AddCarPriceUsecase {
@@ -10,7 +14,11 @@ class AddCarPrice implements AddCarPriceUsecase {
 
   AddCarPrice(this._addCarPriceRepository);
   @override
-  Future<bool> call({required PriceUSD price}) async {
-    return await _addCarPriceRepository.call(price: price);
+  Future<Either<Failure, Unit>> call(
+      {required CarPriceEntity carPriceEntity}) async {
+    if (carPriceEntity.hasError()) {
+      return await _addCarPriceRepository.call(carPriceEntity: carPriceEntity);
+    }
+    return Left(CarPriceError(message: carPriceEntity.validade() ?? 'Add Car Price Error'));
   }
 }
