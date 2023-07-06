@@ -1,19 +1,17 @@
-import 'package:dartz/dartz.dart';
 import 'package:precio_medio_paraguay/app/modules/exchanges/domain/repositories/get_exchange_repository.dart';
 
-import '../../../../core/errors/errors.dart';
-import '../entities/exchange_entity.dart';
+import '../../core/typedef.dart';
 
 abstract class GetAllExchangeUsecase {
-  Future<Either<Failure, List<ExchangeEntity>>> call();
+  Future<ExchangeResult> call();
 }
 
-class GetAllExchangeUsecaseImpl implements GetAllExchangeUsecase {
+class GetAllExchanges implements GetAllExchangeUsecase {
   final GetExchangeRepository _getExchangeRepository;
 
-  GetAllExchangeUsecaseImpl(this._getExchangeRepository);
+  GetAllExchanges(this._getExchangeRepository);
   @override
-  Future<Either<Failure, List<ExchangeEntity>>> call() async {
+  Future<ExchangeResult> call() async {
     return _getExchangeRepository.call();
   }
 }

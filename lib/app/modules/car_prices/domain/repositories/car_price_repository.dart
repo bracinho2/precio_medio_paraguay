@@ -1,0 +1,10 @@
+import '../../core/typedef/typedef.dart';
+import '../entities/car_price_entitity.dart';
+
+abstract class CarPriceRepository {
+  Future<ListCarPriceResult> getPrices();
+  Future<GetPriceResult> getPrice({required String uid});
+  Future<AddCarPriceResult> addPrice({required CarPriceEntity price});
+  Future<UpdateCarPriceResult> updatePrice({required CarPriceEntity price});
+  Future<RemoveCarPriceResult> removePrice({required String uid});
+}

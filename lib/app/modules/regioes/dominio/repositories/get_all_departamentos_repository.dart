@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:precio_medio_paraguay/app/core/errors/errors.dart';
 
 import '../entities/departamento_entity.dart';
+import '../errors/errors.dart';
 
 abstract class GetAllDepartamentosRepository {
-  Future<Either<Failure, List<DepartamentoEntity>>> call();
+  Future<Either<RegionError, List<DepartamentoEntity>>> call();
 }

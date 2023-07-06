@@ -1,7 +1,5 @@
-import 'package:dartz/dartz.dart';
-import 'package:precio_medio_paraguay/app/core/errors/errors.dart';
-import 'package:precio_medio_paraguay/app/modules/exchanges/domain/entities/exchange_entity.dart';
+import '../../core/typedef.dart';
 
 abstract class GetExchangeRepository {
-  Future<Either<Failure, List<ExchangeEntity>>> call();
+  Future<ExchangeResult> call();
 }

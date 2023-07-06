@@ -1,15 +1,5 @@
-import '../../../../core/errors/errors.dart';
+abstract class ExchangeError {}
 
-class ExchangeError extends Failure {
-  final StackTrace? stackTrace;
-  final String? label;
+class ExchangeRepositoryError extends ExchangeError {}
 
-  ExchangeError({
-    super.message = 'ExchangeError',
-    this.stackTrace,
-    this.label,
-  }) : super(
-          stackTrace: stackTrace,
-          label: label,
-        );
-}
+class ExchangeMapperError extends ExchangeError {}

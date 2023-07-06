@@ -1,19 +1,17 @@
-import 'package:dartz/dartz.dart';
-import 'package:precio_medio_paraguay/app/modules/car_register/domain/entities/car_entity.dart';
-import 'package:precio_medio_paraguay/app/modules/car_register/domain/repositories/get_all_cars_repository.dart';
+import 'package:precio_medio_paraguay/app/modules/car_register/core/typedef/typedef.dart';
 
-import '../../../../core/errors/errors.dart';
+import 'package:precio_medio_paraguay/app/modules/car_register/domain/repositories/car_repository.dart';
 
 abstract class GetAllCarsUsecase {
-  Future<Either<Failure, List<CarEntity>>> call();
+  Future<GetAllCarsResult> call();
 }
 
 class GetAllCars implements GetAllCarsUsecase {
-  final GetAllCarsRepository _allCarsRepository;
+  final CarRepository _repository;
 
-  GetAllCars(this._allCarsRepository);
+  GetAllCars(this._repository);
   @override
-  Future<Either<Failure, List<CarEntity>>> call() async {
-    return await _allCarsRepository.call();
+  Future<GetAllCarsResult> call() async {
+    return await _repository.getAllCars();
   }
 }

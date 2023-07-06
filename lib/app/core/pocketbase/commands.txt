@@ -1,0 +1,11 @@
+//baixar o pocketbase
+wget + link github;
+
+//instalar o unzip
+sudo apt get install unzip
+
+//descompactar
+unzip + arquivo pocket.zip
+
+//configurar porta de acesso
+pocketbase serve --http "0.0.0.0:8090"

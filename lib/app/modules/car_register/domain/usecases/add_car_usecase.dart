@@ -1,25 +1,26 @@
-import 'package:dartz/dartz.dart';
+import 'package:precio_medio_paraguay/app/modules/car_register/core/typedef/typedef.dart';
 import 'package:precio_medio_paraguay/app/modules/car_register/domain/entities/car_entity.dart';
 import 'package:precio_medio_paraguay/app/modules/car_register/domain/errors/errors.dart';
-import 'package:precio_medio_paraguay/app/modules/car_register/domain/repositories/add_car_repository.dart';
 
-import '../../../../core/errors/errors.dart';
+import '../repositories/car_repository.dart';
 
 abstract class AddCarUsecase {
-  Future<Either<Failure, Unit>> call({
+  Future<AddCarResult> call({
     required CarEntity car,
   });
 }
 
 class AddCar implements AddCarUsecase {
-  final AddCarRepository _addCarRepository;
+  final CarRepository _repository;
 
-  AddCar(this._addCarRepository);
+  AddCar(this._repository);
   @override
-  Future<Either<Failure, Unit>> call({required CarEntity car}) async {
-    if (car.hasError()) {
-      return await _addCarRepository.call(car: car);
+  Future<AddCarResult> call({
+    required CarEntity car,
+  }) async {
+    if (car.isValid()) {
+      return await _repository.addCar(car: car);
     }
-    return Left(CarRegisterError(message: car.validate() ?? 'Add Car Error'));
+    throw InvalidCar();
   }
 }

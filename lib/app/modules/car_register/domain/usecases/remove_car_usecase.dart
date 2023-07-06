@@ -1,20 +1,16 @@
-import 'package:dartz/dartz.dart';
-import 'package:precio_medio_paraguay/app/modules/car_register/domain/repositories/remove_car_repository.dart';
+import 'package:precio_medio_paraguay/app/modules/car_register/core/typedef/typedef.dart';
+import 'package:precio_medio_paraguay/app/modules/car_register/domain/repositories/car_repository.dart';
 
-import '../../../../core/errors/errors.dart';
-
-abstract class AddCarUsecase {
-  Future<Either<Failure, Unit>> call({
-    required String carID,
-  });
+abstract class RemoveCarUsecase {
+  Future<RemoveResult> call({required String uid});
 }
 
-class AddCar implements AddCarUsecase {
-  final RemoveCarRepository _removeCarRepository;
+class RemoveCar implements RemoveCarUsecase {
+  final CarRepository _carRepository;
 
-  AddCar(this._removeCarRepository);
+  RemoveCar(this._carRepository);
   @override
-  Future<Either<Failure, Unit>> call({required String carID}) async {
-    return await _removeCarRepository.call(carID: carID);
+  Future<RemoveResult> call({required String uid}) async {
+    return await _carRepository.removeCar(uid: uid);
   }
 }

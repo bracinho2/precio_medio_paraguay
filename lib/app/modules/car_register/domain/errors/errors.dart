@@ -1,29 +1,17 @@
-import '../../../../core/errors/errors.dart';
+abstract class CarRegisterError {}
 
-class CarRegisterError extends Failure {
-  final StackTrace? stackTrace;
-  final String? label;
+class InvalidCar extends CarRegisterError {}
 
-  CarRegisterError({
-    super.message = 'CarRegisterError',
-    this.stackTrace,
-    this.label,
-  }) : super(
-          stackTrace: stackTrace,
-          label: label,
-        );
-}
+class CarMapperError extends CarRegisterError {}
 
-class CarRegisterDatasourceError extends Failure {
-  final StackTrace? stackTrace;
-  final String? label;
+class CantAddCar extends CarRegisterError {}
 
-  CarRegisterDatasourceError({
-    super.message = 'CarRegisterDatasourceError',
-    this.stackTrace,
-    this.label,
-  }) : super(
-          stackTrace: stackTrace,
-          label: label,
-        );
-}
+class CantGetAllCars extends CarRegisterError {}
+
+class CantUpdateCar extends CarRegisterError {}
+
+class CarNotFound extends CarRegisterError {}
+
+class CarListNotFound extends CarRegisterError {}
+
+class CantRemoveCar extends CarRegisterError {}

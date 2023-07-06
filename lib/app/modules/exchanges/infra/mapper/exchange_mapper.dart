@@ -10,12 +10,8 @@ class ExchangeMapper {
         salePrice: map['salePrice'],
         updateAt: DateTime.parse(map['updatedAt']),
       );
-    } catch (e, s) {
-      throw ExchangeError(
-        message: e.toString(),
-        stackTrace: s,
-        label: 'Exchange Mapper Error',
-      );
+    } catch (e) {
+      throw ExchangeMapperError();
     }
   }
 }

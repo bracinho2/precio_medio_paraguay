@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "631119579488",
+    "project_id": "preciomedioparaguay",
+    "storage_bucket": "preciomedioparaguay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631119579488:android:650fdac9383579e0077605",
+        "android_client_info": {
+          "package_name": "com.example.precio_medio_paraguay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631119579488-u4lnpqumn9l6u0bfroen2q96ee1eojg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSx7drcXFVzwqu8aeUx8k_T2W1XHeppOY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631119579488-u4lnpqumn9l6u0bfroen2q96ee1eojg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

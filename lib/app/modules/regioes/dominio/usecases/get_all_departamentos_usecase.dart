@@ -1,21 +1,19 @@
-
-
 import 'package:dartz/dartz.dart';
 import 'package:precio_medio_paraguay/app/modules/regioes/dominio/repositories/get_all_departamentos_repository.dart';
 
-import '../../../../core/errors/errors.dart';
 import '../entities/departamento_entity.dart';
+import '../errors/errors.dart';
 
-abstract class GetAllDepartamentosUsecase {
-  Future<Either<Failure, List<DepartamentoEntity>>> call();
+abstract class GetAllDepartamentUsecase {
+  Future<Either<RegionError, List<DepartamentoEntity>>> call();
 }
 
-class GetAllDepartamentos implements GetAllDepartamentosUsecase {
+class GetAllDepartamentos implements GetAllDepartamentUsecase {
   final GetAllDepartamentosRepository _getAllDepartamentosRepository;
 
   GetAllDepartamentos(this._getAllDepartamentosRepository);
   @override
-  Future<Either<Failure, List<DepartamentoEntity>>> call() async {
+  Future<Either<RegionError, List<DepartamentoEntity>>> call() async {
     return await _getAllDepartamentosRepository.call();
   }
 }

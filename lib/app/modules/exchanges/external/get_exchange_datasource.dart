@@ -1,4 +1,4 @@
-import 'package:precio_medio_paraguay/app/core/api_provider/api_provider.dart';
+import 'package:precio_medio_paraguay/app/core/services/api_provider/api_provider.dart';
 import 'package:precio_medio_paraguay/app/modules/exchanges/infra/datasource/get_exchange_datasource.dart';
 
 import '../../../core/exchanges/exchanges.dart';

@@ -1,17 +1,35 @@
-import 'package:flutter/foundation.dart';
-
-enum CarGearType {
-  manual(1, 'MANUAL'),
-  automatic(2, 'AUTOMATIC');
-
-  static CarGearType fromString(String value) => CarGearType.values
-      .firstWhere((e) => e.value.toLowerCase() == value.toLowerCase());
-
-  static CarGearType valueOf(String value) {
-    return CarGearType.values.where((e) => describeEnum(e) == value).first;
-  }
+enum CarGearTypeENUM {
+  automatic(1, 'AUTOMATICO'),
+  manual(2, 'MANUAL');
 
   final String value;
   final int id;
-  const CarGearType(this.id, this.value);
+  const CarGearTypeENUM(this.id, this.value);
+
+  static CarGearTypeENUM fromString(String value) =>
+      CarGearTypeENUM.values.firstWhere(
+        (e) => e.value.toLowerCase() == value.toLowerCase(),
+        orElse: () => CarGearTypeENUM.manual,
+      );
+
+  static String? validator(CarGearTypeENUM? value) {
+    if (value == null) {
+      return 'Selecione tipo de cambio do veiculo';
+    }
+    return null;
+  }
+
+  factory CarGearTypeENUM.fromAPI(String value) {
+    return CarGearTypeENUM.values.firstWhere(
+      (e) => e.value.toLowerCase() == value.toLowerCase(),
+      orElse: () => CarGearTypeENUM.automatic,
+    );
+  }
+
+  static bool? hasError(CarGearTypeENUM? value) {
+    if (value == null) {
+      return true;
+    }
+    return null;
+  }
 }
